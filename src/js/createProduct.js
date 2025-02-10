@@ -1,0 +1,36 @@
+const ProductTitle = document.getElementById('ProductTitle');
+const Quantity = document.getElementById('Quantity');
+const CategorySelection = document.getElementById('CategorySelect');
+const items = document.getElementById('items');
+const boxStyle ="p-5  flex justify-between gap-3"; 
+const reperSTyle = "flex gap-2 items-center";
+const categoryStyle = "py-[1px] px-[6px] inline-block border-2 border-slate-400 text-slate-400 rounded-[12px]";
+const QuantityStyle = "bg-slate-800 rounded-full w-6 flex justify-center items-center  border-2 border-slate-400 text-slate-400 h-6";
+const deletStyle = "py-[1px] px-[6px] inline-block border-2 border-red-400 text-red-400 rounded-[12px]";
+const productCreater = (title,dt,num,category)=>{
+    let box = document.createElement('div');
+    box.className = boxStyle;
+    let name = document.createElement('div');
+    name.innerHTML = title;
+    let date = document.createElement('div');
+    date.innerHTML = dt;
+    let raper = document.createElement('div');
+    raper.className = reperSTyle;
+    let catg = document.createElement('div');
+    catg.innerHTML = category;
+    catg.className = categoryStyle;
+    let number = document.createElement('div');
+    number.innerHTML = num;
+    number.className = QuantityStyle;
+    let del = document.createElement('div');
+    del.innerHTML = 'delet';
+    del.className = deletStyle;
+    raper.appendChild(date);
+    raper.appendChild(catg);
+    raper.appendChild(number);
+    raper.appendChild(del);
+    box.appendChild(name);
+    box.appendChild(raper);
+    items.appendChild(box);
+}
+productCreater('sdf','sf',5,'sdf');
