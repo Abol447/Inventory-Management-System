@@ -566,6 +566,9 @@ video {
 .w-6 {
   width: 1.5rem;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
 .flex-col {
   flex-direction: column;
 }

@@ -8,22 +8,22 @@
 </head>
 <body class="bg-slate-600">
      <div>
-        <div id="addNewCategory" class=" w-[500px] m-auto mt-10 font-mono ">
+        <div class=" w-[500px] m-auto mt-10 font-mono ">
             <div class="font-bold text-xl mb-2"> add New Category</div>
             <form action="" class="flex flex-col gap-3 bg-slate-700 p-5 rounded-[12px]">
                 <div id="categoryTitle" class="flex flex-col gap-1 ">
                     <span class="font-bold">category Title</span>
-                    <input type="text" placeholder="title..." class="bg-transparent text-slate-950 outline-none border border-slate-950 rounded-[12px] pl-5 placeholder-slate-950 w-[200px]" >
+                    <input id="addNewCategory" autocomplete="off" required="true"  type="text" placeholder="title..." class="bg-transparent text-slate-950 outline-none border border-slate-950 rounded-[12px] pl-5 placeholder-slate-950 w-[200px]" >
                 </div>
-                <div id="categoryDescription" class="flex flex-col gap-1">
+                <div class="flex flex-col gap-1">
                     <span class="font-bold">category Description</span>
-                    <textarea  aria-multiline="true" class="bg-transparent  text-slate-950 outline-none border border-slate-950 rounded-[12px]  placeholder-slate-950 h-20"></textarea> 
+                    <textarea id="categoryDescription" aria-multiline="true" class="p-2 bg-transparent  text-slate-950 outline-none border border-slate-950 rounded-[12px]  placeholder-slate-950 h-20"></textarea> 
                 </div>
                 <div id="categoryBtn" class="flex justify-between items-center">
                     <div id="btnCancelCTG" class="font-bold text-sm text-center w-[210px] border border-gray-900 p-2 rounded-[12px]">
                         Cancel
                     </div>
-                    <div id="btnAddCTG" class="font-bold text-sm text-center w-[210px] border border-gray-900 p-2 rounded-[12px] bg-slate-300">
+                    <div id="btnAddCTG" class="font-bold cursor-pointer text-sm text-center w-[210px] border border-gray-900 p-2 rounded-[12px] bg-slate-300">
                         Add New Category
                     </div>
                 </div>
@@ -106,5 +106,9 @@
 
         </div>
      </div>
+     <div id="save" class="w-[500px] m-auto mt-5 cursor-pointer font-bold text-sm text-center border border-gray-900 p-2 rounded-[12px] bg-slate-300 font-mono">
+        save data
+     </div>
+     <script src="/src/js/crertcategori.js"></script>
 </body>
 </html>
