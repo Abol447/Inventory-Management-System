@@ -60,6 +60,7 @@ addProdctBtn.addEventListener('click',()=>{
             }).then((res) =>  res.json())
               .then((res) => console.log(res))
               .catch((err)=> console.log(err))
+              info.push(jsonformater(ProductTitle.value , date.toLocaleDateString(),Number(Quantity.value),CategorySelection[index].innerHTML,rnd))
         }
         ProductTitle.value = '';
         Quantity.value=0;
@@ -105,39 +106,88 @@ searchBtn.addEventListener('click',()=>{
 // <<<<<<<< FILTER >>>>>>>>>
 const SortSelect = document.getElementById('SortSelect')
 SortSelect.addEventListener('change',()=>{
-    mosttoleastsort();
+    let sortIndex = SortSelect.selectedIndex;
+    if(SortSelect[sortIndex].innerHTML == "newest")
+        NewestSort()
+    else if(SortSelect[sortIndex].innerHTML == "most to least")
+        mosttoleastsort()
+    else if(SortSelect[sortIndex].innerHTML == "least to most")
+        lessToMost();
 })
 const NewestSort = ()=>{
     let arr = [];
+    let pre ;
     console.log(info)
-    info.forEach((x)=>{
-        let min = Number(x.id)
-        info.forEach((y)=>{
-            if(arr.indexOf(y.id ) != -1)
-                   return;
-            if(Number(y.id)<min)
-                min = Number(y.id);
-        })
-        arr.unshift(`${min}`)
-    })
+    for(let i = 0; i<info.length;i++)
+    {
+        let min =info[i].id;
+        if(arr.includes(info[i].id)){
+            min = pre;
+        }
+        for(let j = 0;j<info.length;j++)
+        {
+            if(arr.includes(info[j].id))
+                continue;
+            if(info[j].id<min)
+                {
+                    pre = min;
+                    min = info[j].id;
+                }
+        }
+        arr.unshift(min)
+    }       
     console.log(arr)
     reCreatProduct(arr,'id');
 }
 const mosttoleastsort = ()=>{
     let arr = [];
+    let pre ;
     console.log(info)
-    info.forEach((x)=>{
-        let min = Number(x.quantity)
-        info.forEach((y)=>{
-            if(arr.indexOf(y.quantity)!= -1)
-                   return;
-            if(Number(y.quantity)<min)
-                min = Number(y.quantity);
-        })
-        arr.unshift(`${min}`)
-    })
+    for(let i = 0; i<info.length;i++)
+    {
+        let min =info[i].quantity;
+        if(arr.includes(info[i].quantity)){
+             min = pre;
+        }
+        for(let j = 0;j<info.length;j++)
+        {
+            if(arr.includes(info[j].quantity))
+                continue;
+            if(info[j].quantity<min)
+                {
+                    pre = min;
+                    min = info[j].quantity;
+                }
+        }
+        arr.unshift(min)
+    }       
     console.log(arr)
     reCreatProduct(arr,'quantity');
+}
+const lessToMost = ()=>{
+    let arr = [];
+    let pre ;
+    console.log(info)
+    for(let i = 0; i<info.length;i++)
+    {
+        let min =info[i].quantity;
+        if(arr.includes(info[i].quantity)){
+             min = pre;
+        }
+        for(let j = 0;j<info.length;j++)
+        {
+            if(arr.includes(info[j].quantity))
+                continue;
+            if(info[j].quantity<min)
+                {
+                    pre = min;
+                    min = info[j].quantity;
+                }
+        }
+        arr.push(min)
+    }       
+    console.log(arr)
+    reCreatProduct(arr,'quantity'); 
 }
 const reCreatProduct = (arr,key)=>{
     items.innerHTML ='';
